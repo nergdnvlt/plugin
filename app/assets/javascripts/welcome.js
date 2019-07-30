@@ -6,15 +6,21 @@ function buyProd(fsProdPath) {
 }
 
 function popupWebhookReceived(fsData) {
-  if ( fsData.id ) {
-    userId = fsData.id
-    let user = { id: userId }
+  if ( fsData ) {
+    let order = {
+      account: fsData.account,
+      orderId: fsData.id
+    }
+    debugger
+
+    userId = fsData.account
+
     fetch('api/v1/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(order)
     })
     .then(function(response) {
       return response.status
