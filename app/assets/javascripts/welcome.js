@@ -16,6 +16,18 @@ function popupWebhookReceived(fsData) {
       },
       body: JSON.stringify(user)
     })
-    .then(function(response) { return response.json(); })
+    .then(function(response) {
+      return response.status
+    })
   }
+}
+
+function popupClose( orderReference ) {
+  if ( orderReference ) {
+    fastspring.builder.reset()
+    window.location.replace(`localhost:3000/${userId}`);
+  } else {
+    window.location.replace("localhost:3000/");
+  }
+
 }

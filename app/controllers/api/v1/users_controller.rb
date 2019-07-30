@@ -4,8 +4,13 @@
 
 class Api::V1::UsersController < ApiController
   def create
-    User.find_or_create_by(id: user_params[:id])
-    render plain: "", status: 200
+    user = User.find_or_create_by(fs_id: user_params[:id])
+    binding.pry
+    if user.save!
+      render json: {"message": "user created" }, status: 200
+    else
+      render status: 500
+    end
   end
 
   private
