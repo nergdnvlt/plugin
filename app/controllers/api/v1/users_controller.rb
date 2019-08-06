@@ -6,31 +6,31 @@ class Api::V1::UsersController < ApiController
   before_action :user, only: [:update]
 
   def create
-    user = User.find_or_create_by(fs_id: user_params[:id])
-    if user.save!
+    user = FastspringAccountService.build(params)
+    if user
       render json: {"message": "user created" }, status: 200
     else
       render json: {"message": "user not created" }, status: 500
     end
   end
 
-  def update
-    user = User.find_by(fs_id: params[:events][0][:data][:account][:id])
-    binding.pry
-    user.first_name = user[:first_name]
-    user.last_name = user[:last_name]
-    user.email = user[:email]
-    if user.save!
-      render json: {"message": "user updated" }, status: 200
-    else
-      render json: {"message": "user not updated" }, status: 500
-    end
-  end
+  # def update
+  #   binding.pry
+  #   user = User.find_by(fs_id: params[:events][0][:data][:account][:id])
+  #   user.first_name = user[:first_name]
+  #   user.last_name = user[:last_name]
+  #   user.email = user[:email]
+  #   if user.save!
+  #     render json: {"message": "user updated" }, status: 200
+  #   else
+  #     render json: {"message": "user not updated" }, status: 500
+  #   end
+  # end
 
   private
 
   def user_params
-    params.require(:user).permit(:id)
+    params.require(:user).permit(:fs_id)
   end
 
   def user

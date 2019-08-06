@@ -22,3 +22,5 @@ prods << prod4
 prods.each do |prod|
   puts "#{prod.title} created!"
 end
+
+# User.create!(first_name: 'Thrasher', last_name: 'Odinson', email: 'thrashman@mail.io', country: 'US', zipcode: 80303)

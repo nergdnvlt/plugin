@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  has_many :registrations
-  has_many :products, through: :registrations
+  validates :email, uniqueness: true
+
+  has_many :orders
+
 end

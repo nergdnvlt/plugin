@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 class Product < ApplicationRecord
-  has_many :registrations
-  has_many :users, through: :registrations
+  has_many :line_items
+  has_many :orders, through: :line_items
 end

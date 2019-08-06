@@ -7,11 +7,14 @@ function buyProd(fsProdPath) {
 
 function popupWebhookReceived(fsData) {
   if ( fsData ) {
-    let order = {
-      account: fsData.account,
-      orderId: fsData.id
+    let orderInfo = {
+      user: {
+        fs_id: fsData.account
+      },
+      order: {
+        orderId: fsData.id
+      }
     }
-    debugger
 
     userId = fsData.account
 
@@ -20,7 +23,7 @@ function popupWebhookReceived(fsData) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(order)
+      body: JSON.stringify(orderInfo)
     })
     .then(function(response) {
       return response.status
