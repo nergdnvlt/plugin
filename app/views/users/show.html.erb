@@ -1,0 +1,20 @@
+<h1> Welcome, <%= @user.first_name %>!</h1>
+
+<h4>Here are your current orders:</h4>
+
+<% @user.orders.each do |order| %>
+<table>Order ID: <%= order.order_id %> Active: <%= order.active %>
+  <tr>
+    <th>Product</th>
+    <th>License</th>
+  </tr>
+
+  <% order.line_items.each do |line_item| %>
+
+  <tr>
+    <th><%= line_item.product.title %></th>
+    <th><%= line_item.fulfillment %></th>
+  </tr>
+  <% end %>
+</table>
+<% end %>

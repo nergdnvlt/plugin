@@ -34,9 +34,9 @@ function popupWebhookReceived(fsData) {
 
 function popupClose( orderReference ) {
   if ( orderReference ) {
-    debugger
     fastspring.builder.reset()
-    window.location.replace(`localhost:3000/${userId}`);
+    // userUrl = `localhost:3000/${userId}`
+    window.location.replace(userId);
   } else {
     window.location.replace("localhost:3000/");
   }
