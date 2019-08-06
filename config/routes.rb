@@ -10,5 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
+  post 'login', to: 'sessions#create'
+
   get '/:slug', to: 'users#show', as: 'user'
 end
