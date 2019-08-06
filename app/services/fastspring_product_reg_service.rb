@@ -1,11 +1,11 @@
 
 class FastspringProductRegService
   def self.populate(resp)
-    new(resp).call
+    new(resp).call?
   end
 
-  def call
-    @user && @order
+  def call?
+    return true if @user && @order
   end
 
   private
@@ -14,7 +14,6 @@ class FastspringProductRegService
     @user = populate_user(resp)
     @order = build_order(resp)
     @line_items = populate_order(format_order(resp))
-    binding.pry
   end
 
   def populate_user(resp_ob)
@@ -47,8 +46,8 @@ class FastspringProductRegService
       db_product = Product.find_by(path: product[:product])
       product[:quantity].times do |index|
         @order.line_items.create!(
-          product: db_product,
-          fulfillment: product[:fulfillment[index]]
+          product_id: db_product.id,
+          fulfillment: product[:fulfillments][index]
         )
       end
     end
@@ -79,7 +78,12 @@ class FastspringProductRegService
       product = Hash.new
       product[:product] = item[:product]
       product[:quantity] = item[:quantity]
-      product[:fulfillment] = [item[:fulfillments].values.flatten[0][:license]]
+      product[:fulfillments] = []
+      if item[:fulfillments]
+        item[:fulfillments].values.flatten.each do |sub_item|
+          product[:fulfillments] << sub_item[:license]
+        end
+      end
       product
     end
   end

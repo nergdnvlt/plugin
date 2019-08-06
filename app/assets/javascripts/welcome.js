@@ -2,6 +2,7 @@ let userId = ""
 
 function buyProd(fsProdPath) {
   fastspring.builder.add(fsProdPath);
+  // fastspring.builder.update(fsProdPath, 4);
   fastspring.builder.checkout();
 }
 
@@ -33,6 +34,7 @@ function popupWebhookReceived(fsData) {
 
 function popupClose( orderReference ) {
   if ( orderReference ) {
+    debugger
     fastspring.builder.reset()
     window.location.replace(`localhost:3000/${userId}`);
   } else {

@@ -14,7 +14,7 @@ class FastspringOrderService
   end
 
   def parsed_response
-    resp = JSON.parse(conn.body, symbolize_names: true)
+    JSON.parse(conn.body, symbolize_names: true)
   end
 
   def conn
