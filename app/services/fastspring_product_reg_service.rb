@@ -35,8 +35,7 @@ class FastspringProductRegService
     raw_order = format_order(resp_ob)
     order = @user.orders.create(
       order_id: raw_order[:order_id],
-      total: raw_order[:total],
-      active: raw_order[:active]
+      total: raw_order[:total]
     )
     order
   end
@@ -44,10 +43,10 @@ class FastspringProductRegService
   def populate_order(order_info)
     order_info[:products].each do |product|
       db_product = Product.find_by(path: product[:product])
-      product[:quantity].times do |index|
+      product[:quantity].times do
         @order.line_items.create!(
           product_id: db_product.id,
-          fulfillment: product[:fulfillments][index]
+          active: order_info[:active]
         )
       end
     end
@@ -78,12 +77,6 @@ class FastspringProductRegService
       product = Hash.new
       product[:product] = item[:product]
       product[:quantity] = item[:quantity]
-      product[:fulfillments] = []
-      if item[:fulfillments]
-        item[:fulfillments].values.flatten.each do |sub_item|
-          product[:fulfillments] << sub_item[:license]
-        end
-      end
       product
     end
   end

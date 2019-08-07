@@ -3,7 +3,6 @@ class CreateOrders < ActiveRecord::Migration[5.2]
     create_table :orders do |t|
       t.string :order_id
       t.float :total
-      t.boolean :active
 
       t.timestamps
     end

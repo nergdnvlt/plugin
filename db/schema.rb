@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2019_08_05_215248) do
   enable_extension "plpgsql"
 
   create_table "line_items", force: :cascade do |t|
+    t.boolean "active"
     t.string "fulfillment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -28,7 +29,6 @@ ActiveRecord::Schema.define(version: 2019_08_05_215248) do
   create_table "orders", force: :cascade do |t|
     t.string "order_id"
     t.float "total"
-    t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"

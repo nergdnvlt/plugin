@@ -3,10 +3,11 @@
 <h4>Here are your current orders:</h4>
 
 <% @user.orders.each do |order| %>
-<table>Order ID: <%= order.order_id %> Active: <%= order.active %>
+<table>Order ID: <%= order.order_id %>
   <tr>
     <th>Product</th>
     <th>License</th>
+    <th>Active?</th>
   </tr>
 
   <% order.line_items.each do |line_item| %>
@@ -14,6 +15,7 @@
   <tr>
     <th><%= line_item.product.title %></th>
     <th><%= line_item.fulfillment %></th>
+    <th><%= line_item.active? %></th>
   </tr>
   <% end %>
 </table>
