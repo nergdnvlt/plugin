@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root 'products#index'
+
+  resources :products, only: [:index]
+  get '/products/:path', to: 'products#show', as: 'product'
 
   namespace :api do
     namespace :v1 do
@@ -12,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   post 'login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy', as: 'logout'
 
   get '/:slug', to: 'users#show', as: 'user'
 end

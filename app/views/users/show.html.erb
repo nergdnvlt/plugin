@@ -13,9 +13,9 @@
   <% order.line_items.each do |line_item| %>
 
   <tr>
-    <th><%= line_item.product.title %></th>
-    <th><%= line_item.fulfillment %></th>
-    <th><%= line_item.active? %></th>
+    <td><%= line_item.product.title %></td>
+    <td><%= line_item.fulfillment %></td>
+    <td><%= line_item.active? %></td>
   </tr>
   <% end %>
 </table>
