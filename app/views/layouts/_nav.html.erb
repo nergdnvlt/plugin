@@ -7,8 +7,15 @@
     <% if current_user %>
       <%= link_to image_tag('icons', class: 'pbicons'), logout_path, method: :delete %>
     <% else %>
-      <%= render "sessions/form" %>
+      <%= link_to image_tag('icons', class: 'pbicons'), login_path, { :remote => true, 'data-toggle' => 'modal', 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg pbicons' } %>
     <% end %>
+
+    <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content"></div>
+      </div>
+    </div>
+
   </div>
 </div>
 <div class="blue-nav">
@@ -22,3 +29,10 @@
   </div>
 
 </div>
+
+
+
+
+
+
+
