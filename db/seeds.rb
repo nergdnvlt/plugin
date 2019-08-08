@@ -17,7 +17,10 @@ prod3 = Product.create!(title: "Sugar Bundle", path: "sugar-bundle")
 prods << prod3
 prod4 = Product.create!(title: "Scaler", path: "scaler")
 prods << prod4
-
+prod5 = Product.create!(title: "Comet", path: "comet")
+prods << prod5
+prod6 = Product.create!(title: "PlexiTape", path: "plexitape")
+prods << prod6
 
 prods.each do |prod|
   puts "#{prod.title} created!"

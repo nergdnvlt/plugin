@@ -11,12 +11,12 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <%= link_to 'Log Out', logout_path, method: :delete %>
-    <% else %>
-      <%= render "sessions/form" %>
-    <% end %>
-    <br><br>
-    <%= yield %>
+
+    <%= render "layouts/nav" %>
+    <div class="page-container">
+
+      <%= yield %>
+
+    </div>
   </body>
 </html>

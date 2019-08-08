@@ -1,0 +1,24 @@
+<div class="white-nav">
+  <div>
+  <%= link_to image_tag("pluginboutique-logo", class: "pblogo"), root_path %>
+  </div>
+  <br>
+  <div>
+    <% if current_user %>
+      <%= link_to image_tag('icons', class: 'pbicons'), logout_path, method: :delete %>
+    <% else %>
+      <%= render "sessions/form" %>
+    <% end %>
+  </div>
+</div>
+<div class="blue-nav">
+  <div class="blue-nav-links">
+    <a class="blue-nav-link-ind" href="#">Software</a>
+    <a class="blue-nav-link-ind" href="#">Free</a>
+    <a class="blue-nav-link-ind" href="#">Deals</a>
+    <a class="blue-nav-link-ind" href="#">Courses</a>
+    <a class="blue-nav-link-ind" href="#">Bundles</a>
+    <a class="blue-nav-link-ind" href="#">Manufacturers</a>
+  </div>
+
+</div>

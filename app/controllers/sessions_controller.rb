@@ -11,6 +11,13 @@ class SessionsController < ApplicationController
     end
   end
 
+  def form
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   def destroy
     reset_session
     redirect_to root_path
