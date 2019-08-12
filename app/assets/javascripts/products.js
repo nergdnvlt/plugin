@@ -2,8 +2,20 @@ let userId = ""
 
 function buyProd(fsProdPath) {
   fastspring.builder.add(fsProdPath);
-  // fastspring.builder.update(fsProdPath, 4);
   fastspring.builder.checkout();
+}
+
+function buyProdPage(fsProdPath) {
+  qty = document.getElementById('fs-qty').value;
+  qty = parseInt(qty, 10)
+  fastspring.builder.update(fsProdPath, qty);
+  fastspring.builder.checkout();
+}
+
+function adjQty(prod) {
+  qty = document.getElementById('fs-qty').value;
+  qty = parseInt(qty, 10)
+  fastspring.builder.update(prod, qty);
 }
 
 function popupWebhookReceived(fsData) {

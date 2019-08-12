@@ -35,8 +35,13 @@
         <h6 class="price-desc">Your Price</h6>
         <span class="fs-price"
           data-fsc-item-path="<%= @product.path %>"
-          data-fsc-item-price>
+          data-fsc-item-total>
         </span>
+      </div>
+
+      <div class="quantity">
+        Quantity
+        <input id="fs-qty" type="number" value="1" onchange="adjQty('<%= j @product.path %>')">
       </div>
 
       <div class="buttons">
@@ -45,7 +50,7 @@
           <h6 class="cart-text">Trial Version</h6>
         </button>
 
-      <button onclick="buyProd('<%= j @product.path %>');", class="cart-button">
+      <button onclick="buyProdPage('<%= j @product.path %>');", class="cart-button">
         <%= image_tag('cart') %>
         <h6 class="cart-text">Add to Cart</h6>
       </button>

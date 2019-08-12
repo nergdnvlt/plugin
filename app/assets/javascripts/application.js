@@ -19,6 +19,3 @@
 //= require turbolinks
 //= require local-time
 //= require_tree .
-
-import LocalTime from "local-time"
-LocalTime.start()
