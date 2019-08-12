@@ -11,11 +11,11 @@ body {
 }
 
 .white-nav {
-  padding-left: 11%;
-  padding-right: 11%;
+  margin-left: 20%;
+  margin-right: 20%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .pblogo {
@@ -42,8 +42,8 @@ body {
 }
 
 .blue-nav-links {
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: 19%;
+  padding-right: 19%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
