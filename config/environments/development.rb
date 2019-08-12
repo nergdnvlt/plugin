@@ -62,5 +62,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.web_console.whitelisted_ips = '107.23.30.83'
-  config.require_master_key = true
+  config.require_master_key = false
 end
