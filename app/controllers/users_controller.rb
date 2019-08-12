@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find_by(fs_id: params[:slug])
-    session[:user_id] = @user.fs_id if @user
+    if session[:user_id]
+      @user = User.find_by(fs_id: session[:user_id])
+    else
+      reset_session
+      redirect_to root_path
+    end
   end
 end
