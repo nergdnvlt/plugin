@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product
   end
 
   private

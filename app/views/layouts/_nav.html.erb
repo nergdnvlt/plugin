@@ -5,9 +5,12 @@
   <br>
   <div>
     <% if current_user %>
-      <%= link_to image_tag('icons', class: 'pbicons'), logout_path, method: :delete %>
+      <div>
+        <%= link_to image_tag('account', class: 'pbicons'), user_path(current_user.fs_id) %>
+        <%= link_to image_tag('logout', class: 'pbicons'), logout_path, method: :delete %>
+      </div>
     <% else %>
-      <%= link_to image_tag('icons', class: 'pbicons'), login_path, { :remote => true, 'data-toggle' => 'modal', 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg pbicons' } %>
+      <%= link_to image_tag('login', class: 'pbicons'), login_path, { :remote => true, 'data-toggle' => 'modal', 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg pbicons' } %>
     <% end %>
 
     <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
