@@ -1,22 +1,31 @@
-<h1> Welcome, <%= @user.first_name %>!</h1>
+<div class="account-page">
+  <h3><%= @user.first_name %>, here are your current orders:</h3>
 
-<h4>Here are your current orders:</h4>
+  <% @user.orders.each do |order| %>
 
-<% @user.orders.each do |order| %>
-<table>Order ID: <%= order.order_id %>
-  <tr>
-    <th>Product</th>
-    <th>License</th>
-    <th>Active?</th>
-  </tr>
+  <div class="order-table">
+    <table>
+      <div class="order-header">
+          <h6>Order ID: <%= order.order_id %></h6>
+          <h6>Purchase Date: <%= local_time( order.created_at, "%m/%d/%Y at %l:%M%p") %></h6>
+      </div>
 
-  <% order.line_items.each do |line_item| %>
+      <tr class="order-header-titles">
+        <th class="item">Product</th>
+        <th class="item middle">License</th>
+        <th class="item">Active?</th>
+      </tr>
 
-  <tr>
-    <td><%= line_item.product.title %></td>
-    <td><%= line_item.fulfillment %></td>
-    <td><%= line_item.active? %></td>
-  </tr>
+      <% order.line_items.each do |line_item| %>
+
+      <tr>
+        <td class="item"><%= line_item.product.title %></td>
+        <td class="item middle"><%= line_item.fulfillment %></td>
+        <td class="item"><%= line_item.active? %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
   <% end %>
-</table>
-<% end %>
+
+</div>
